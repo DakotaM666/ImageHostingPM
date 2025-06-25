@@ -1,8 +1,8 @@
 {
-    "Coins": 500,
+    "Coins": 560,
     "CarrotPlant": 0,
     "Carrots": 0,
-    "PotatoPlant": 50,
+    "PotatoPlant": 0,
     "Potatoes": 0,
     "LettucePlant": 0,
     "Lettuce": 0,
@@ -11,8 +11,8 @@
     "Cows": 0,
     "Milk": 0,
     "Pots": 0,
-    "rolls": 1,
-    "Ideality": 6,
+    "rolls": 3,
+    "Ideality": 10,
     "Mang-chi": true,
     "Mars": true,
     "Alpha": true,
@@ -71,5 +71,6 @@
     "Tommy": true,
     "Jia Zheng": true,
     "Stephanette": true,
-    "Ahab": true
+    "Ahab": true,
+    "Pameli": true
 }

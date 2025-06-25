@@ -98,56 +98,96 @@ async def newfarm(ctx):
         await ctx.channel.send("Correctly registered as a new farmer")
 
 @bot.command()
-async def plantcarrot(ctx):
+async def plantcarrot(ctx, *args: int):
     fileopen = str(ctx.author) + ".json"
     file = open(fileopen, "r", encoding="utf-8")
     predata = json.load(file)
-    if predata["Pots"] > 0 and predata["Carrots"] > 0:
-        fileopen = str(ctx.author) + ".json"
-        file = open(fileopen, "w", encoding="utf-8")
-        data = predata
-        data["Carrots"] = predata["Carrots"] - 1
-        data["Pots"] = predata["Pots"] - 1
-        data["CarrotPlant"] = predata["CarrotPlant"] + 1
-        json.dump(data, file, ensure_ascii=False, indent=4)
-        await ctx.channel.send(f"Planted 1 carrots 🥕\nTotal carrot plants: {(data["CarrotPlant"])} \nTotal pots: {(data["Pots"])}\nTotal carrots: {(data["Carrots"])}")
+    if len(args) > 0:
+        if predata["Pots"] >= args[0] and predata["Carrots"] >= args[0]:
+            fileopen = str(ctx.author) + ".json"
+            file = open(fileopen, "w", encoding="utf-8")
+            data = predata
+            data["Carrots"] = predata["Carrots"] - args[0]
+            data["Pots"] = predata["Pots"] - args[0]
+            data["CarrotPlant"] = predata["CarrotPlant"] + args[0]
+            json.dump(data, file, ensure_ascii=False, indent=4)
+            await ctx.channel.send(
+                f"Planted {args[0]} carrots 🥕\nTotal carrot plants: {(data["CarrotPlant"])} \nTotal pots: {(data["Pots"])}\nTotal carrots: {(data["Carrots"])}")
+        else:
+            await ctx.channel.send("Not enough Pots or Carrots")
     else:
-        await ctx.channel.send("Not enough Pots or Carrots")
+        if predata["Pots"] > 0 and predata["Carrots"] > 0:
+            fileopen = str(ctx.author) + ".json"
+            file = open(fileopen, "w", encoding="utf-8")
+            data = predata
+            data["Carrots"] = predata["Carrots"] - 1
+            data["Pots"] = predata["Pots"] - 1
+            data["CarrotPlant"] = predata["CarrotPlant"] + 1
+            json.dump(data, file, ensure_ascii=False, indent=4)
+            await ctx.channel.send(f"Planted 1 carrots 🥕\nTotal carrot plants: {(data["CarrotPlant"])} \nTotal pots: {(data["Pots"])}\nTotal carrots: {(data["Carrots"])}")
+        else:
+            await ctx.channel.send("Not enough Pots or Carrots")
 
 @bot.command()
-async def plantlettuce(ctx):
+async def plantlettuce(ctx, *args: int):
     fileopen = str(ctx.author) + ".json"
     file = open(fileopen, "r", encoding="utf-8")
     predata = json.load(file)
-    if predata["Pots"] > 0 and predata["Lettuce"] > 0:
-        fileopen = str(ctx.author) + ".json"
-        file = open(fileopen, "w", encoding="utf-8")
-        data = predata
-        data["Lettuce"] = predata["Lettuce"] - 1
-        data["Pots"] = predata["Pots"] - 1
-        data["LettucePlant"] = predata["LettucePlant"] + 1
-        json.dump(data, file, ensure_ascii=False, indent=4)
-        await ctx.channel.send(f"Planted 1 lettuce 🥬\nTotal lettuce plants: {(data["LettucePlant"])} \nTotal pots: {(data["Pots"])}\nTotal lettuce: {(data["Lettuce"])}")
+    if len(args) > 0:
+        if predata["Pots"] >= args[0] and predata["Lettuce"] >= args[0]:
+            fileopen = str(ctx.author) + ".json"
+            file = open(fileopen, "w", encoding="utf-8")
+            data = predata
+            data["Lettuce"] = predata["Lettuce"] - args[0]
+            data["Pots"] = predata["Pots"] - args[0]
+            data["LettucePlant"] = predata["LettucePlant"] + args[0]
+            json.dump(data, file, ensure_ascii=False, indent=4)
+            await ctx.channel.send(f"Planted {args[0]} lettuce 🥬\nTotal lettuce plants: {(data["LettucePlant"])} \nTotal pots: {(data["Pots"])}\nTotal lettuce: {(data["Lettuce"])}")
+        else:
+            await ctx.channel.send("Not enough Pots or Lettuce")
     else:
-        await ctx.channel.send("Not enough Pots or Lettuce")
+        if predata["Pots"] > 0 and predata["Lettuce"] > 0:
+            fileopen = str(ctx.author) + ".json"
+            file = open(fileopen, "w", encoding="utf-8")
+            data = predata
+            data["Lettuce"] = predata["Lettuce"] - 1
+            data["Pots"] = predata["Pots"] - 1
+            data["LettucePlant"] = predata["LettucePlant"] + 1
+            json.dump(data, file, ensure_ascii=False, indent=4)
+            await ctx.channel.send(f"Planted 1 lettuce 🥬\nTotal lettuce plants: {(data["LettucePlant"])} \nTotal pots: {(data["Pots"])}\nTotal lettuce: {(data["Lettuce"])}")
+        else:
+            await ctx.channel.send("Not enough Pots or Lettuce")
+
 
 @bot.command()
-async def plantpotato(ctx):
+async def plantpotato(ctx, *args: int):
     fileopen = str(ctx.author) + ".json"
     file = open(fileopen, "r", encoding="utf-8")
     predata = json.load(file)
-    if predata["Pots"] > 0 and predata["Potatoes"] > 0:
-        fileopen = str(ctx.author) + ".json"
-        file = open(fileopen, "w", encoding="utf-8")
-        data = predata
-        data["Potatoes"] = predata["Potatoes"] - 1
-        data["Pots"] = predata["Pots"] - 1
-        data["PotatoPlant"] = predata["PotatoPlant"] + 1
-        json.dump(data, file, ensure_ascii=False, indent=4)
-        await ctx.channel.send(f"Planted 1 potato 🥔\nTotal potato plants: {(data["PotatoPlant"])} \nTotal pots: {(data["Pots"])}\nTotal potatoes: {(data["Potatoes"])}")
+    if len(args) > 0:
+        if predata["Pots"] >= args[0] and predata["Potatoes"] >= args[0]:
+            fileopen = str(ctx.author) + ".json"
+            file = open(fileopen, "w", encoding="utf-8")
+            data = predata
+            data["Potatoes"] = predata["Potatoes"] - args[0]
+            data["Pots"] = predata["Pots"] - args[0]
+            data["PotatoPlant"] = predata["PotatoPlant"] + args[0]
+            json.dump(data, file, ensure_ascii=False, indent=4)
+            await ctx.channel.send(f"Planted {args[0]} potato 🥔\nTotal potato plants: {(data["PotatoPlant"])} \nTotal pots: {(data["Pots"])}\nTotal potatoes: {(data["Potatoes"])}")
+        else:
+            await ctx.channel.send("Not enough Pots or Potatoes")
     else:
-        await ctx.channel.send("Not enough Pots or Potatoes")
-
+        if predata["Pots"] > 0 and predata["Potatoes"] > 0:
+            fileopen = str(ctx.author) + ".json"
+            file = open(fileopen, "w", encoding="utf-8")
+            data = predata
+            data["Potatoes"] = predata["Potatoes"] - 1
+            data["Pots"] = predata["Pots"] - 1
+            data["PotatoPlant"] = predata["PotatoPlant"] + 1
+            json.dump(data, file, ensure_ascii=False, indent=4)
+            await ctx.channel.send(f"Planted 1 potato 🥔\nTotal potato plants: {(data["PotatoPlant"])} \nTotal pots: {(data["Pots"])}\nTotal potatoes: {(data["Potatoes"])}")
+        else:
+            await ctx.channel.send("Not enough Pots or Potatoes")
 
 def search(values, searchFor):
     listOfKeys = []
