@@ -5,14 +5,14 @@
     "PotatoPlant": 0,
     "Potatoes": 0,
     "LettucePlant": 1,
-    "Lettuce": 0,
+    "Lettuce": 3,
     "Pigs": 0,
     "Meat": 0,
     "Cows": 0,
     "Milk": 0,
     "Pots": 1,
-    "rolls": 0,
-    "Ideality": 3,
+    "rolls": 2,
+    "Ideality": 5,
     "Anton": true,
     "Paula": true,
     "Harold": true,
@@ -44,5 +44,8 @@
     "Stephanette": true,
     "Denis": true,
     "Nicolina, the Barber": true,
-    "Chesed": true
+    "Chesed": true,
+    "Eunbong's Bar and Fryers Owner": true,
+    "Yuna": true,
+    "Every Catherine": true
 }

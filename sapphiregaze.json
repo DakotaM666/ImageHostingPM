@@ -1,9 +1,9 @@
 {
-    "Coins": 60,
+    "Coins": 1840,
     "CarrotPlant": 0,
     "Carrots": 0,
-    "PotatoPlant": 75,
-    "Potatoes": 25,
+    "PotatoPlant": 100,
+    "Potatoes": 0,
     "LettucePlant": 0,
     "Lettuce": 0,
     "Pigs": 0,
@@ -11,8 +11,8 @@
     "Cows": 0,
     "Milk": 0,
     "Pots": 0,
-    "rolls": 0,
-    "Ideality": 29,
+    "rolls": 4,
+    "Ideality": 30,
     "Wang Qingshan": true,
     "Zulu": true,
     "Dulcinea, the Princess": true,
@@ -103,5 +103,9 @@
     "Bodhisattva Chicken's Manager": true,
     "Pete": true,
     "Wang": true,
-    "Heathcliff": true
+    "Heathcliff": true,
+    "Miris": true,
+    "Domino": true,
+    "Mi": true,
+    "Valentin": true
 }
