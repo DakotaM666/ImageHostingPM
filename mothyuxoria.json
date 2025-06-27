@@ -1,5 +1,5 @@
 {
-    "Coins": 560,
+    "Coins": 580,
     "CarrotPlant": 0,
     "Carrots": 0,
     "PotatoPlant": 0,
@@ -11,8 +11,8 @@
     "Cows": 0,
     "Milk": 0,
     "Pots": 0,
-    "rolls": 3,
-    "Ideality": 10,
+    "rolls": 1,
+    "Ideality": 14,
     "Mang-chi": true,
     "Mars": true,
     "Alpha": true,
@@ -72,5 +72,16 @@
     "Jia Zheng": true,
     "Stephanette": true,
     "Ahab": true,
-    "Pameli": true
+    "Pameli": true,
+    "Mei": true,
+    "Oswald, the 8 o'Clock Ringmaster": true,
+    "Arnold": true,
+    "Alloc": true,
+    "Niko": true,
+    "Stephan": true,
+    "Don Quixote of La Manchaland": true,
+    "Yun": true,
+    "Walter": true,
+    "Anton": true,
+    "Demian": true
 }
