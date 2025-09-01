@@ -24,7 +24,8 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)
-channel_id = 1258153931549442108
+#channel_id = 1258153931549442108
+channel_id = 1412053683646238770
 start = time.time()
 emoji_list = []
 
