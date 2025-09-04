@@ -510,14 +510,14 @@ async def PMcard(ctx, arg2, arg, *gifon: bool):
             await PMint(ctx, int(arg), arg2, frames)
             name = CharacterIDs.CharacterNames[int(arg)]
 
-        # frames[0].save(
-        #     "output.gif",
-        #     format='GIF',
-        #     save_all=True,
-        #     append_images=frames[1:],
-        #     duration=50,
-        #     disposal=2
-        # )
+        #frames[0].save(
+        #    "output.gif",
+        #    format='GIF',
+        #    save_all=True,
+        #    append_images=frames[1:],
+        #    duration=50,
+        #    disposal=2
+        #)
 
         if int(arg2) == 1:
             embed01 = discord.Embed(title=name, color=discord.Color.green())
@@ -536,10 +536,15 @@ async def PMcard(ctx, arg2, arg, *gifon: bool):
             if gifon[0] == True:
                 embed01.set_image(url="attachment://output.gif")
                 await ctx.send(file=discord.File("output.gif"), embed=embed01)
+            if gifon[0] == False:
+                frames[24].save("outputstatic.png")
+                embed01.set_image(url="attachment://outputstatic.png")
+                await ctx.send(file=discord.File("outputstatic.png"), embed=embed01)
         except:
             frames[24].save("outputstatic.png")
             embed01.set_image(url="attachment://outputstatic.png")
             await ctx.send(file=discord.File("outputstatic.png"), embed=embed01)
+
 
 
 async def PMint(ctx, arg, arg2, *outnum: list):
@@ -563,7 +568,7 @@ async def PMint(ctx, arg, arg2, *outnum: list):
 
     frames = []
     for x in range(25):
-        if (x == 24):
+        #if (x == 24):
             print(x)
             a = int(11*(x+1))
             b = int(125-5*(x+1))
@@ -573,8 +578,8 @@ async def PMint(ctx, arg, arg2, *outnum: list):
             empty1 = empty.copy()
             empty1.paste(background1, (b, 0))
             frames.append(empty1)
-        else:
-            frames.append(empty)
+        #else:
+        #    frames.append(empty)
 
 
 
@@ -589,14 +594,14 @@ async def PMint(ctx, arg, arg2, *outnum: list):
     #    background1.alpha_composite(im, (0, 0))
     #    frames.append(Image.blend(background2, background1, math.sin((i/31)*3)))
 
-    # frames[0].save(
-    #     f"output{outnum[0]}.gif",
-    #     format='GIF',
-    #     save_all=True,
-    #     append_images=frames[1:],
-    #     duration=50,
-    #     disposal=2
-    # )
+    frames[0].save(
+         f"output.gif",
+         format='GIF',
+         save_all=True,
+         append_images=frames[1:],
+         duration=50,
+         disposal=2
+    )
 
     for x in range(25):
         outnum[0].append(frames[x])
@@ -869,52 +874,52 @@ async def myLoop():
                 embed01.add_field(name="**Rolls earned**", value= f"{(1 + int(ideality/30))}: (base 1, +1 for each 30 Ideality (owned : {ideality}))")
                 await bot.get_channel(channel_id).send(embed=embed01)
                 json.dump(data, file, ensure_ascii=False, indent=4)
-    for guild in bot.guilds:
-        for member in guild.members:
-            locationFile = f"./{str(member)}.json"
-            if os.path.isfile(locationFile) and os.access(locationFile, os.R_OK):
-                fileopen = str(member) + ".json"
-                file = open(fileopen, "r", encoding="utf-8")
-                predata = json.load(file)
-                fileopen = str(member) + ".json"
-                file = open(fileopen, "w", encoding="utf-8")
-                data = predata
-                coins = predata["Coins"]
-                carrots = predata["Carrots"]
-                potatoes = predata["Potatoes"]
-                lettuce = predata["Lettuce"]
-                meat = predata["Meat"]
-                milk = predata["Milk"]
-                carrot_plants = predata["CarrotPlant"]
-                potato_plants = predata["PotatoPlant"]
-                lettuce_plants = predata["LettucePlant"]
-                pigs = predata["Pigs"]
-                cows = predata["Cows"]
-
-                responses = ["🪙", "🥕", "🥔", "🥬", "🐖", "🐄", "🥩", "🥛", "🪴"]
-                embed01 = discord.Embed(title=f"{str(member)}'s Farm", color=discord.Color.green())
-                if int(coins/250) > 0:
-                    embed01.add_field(name="**Coin Interests**", value=f"{coins:05d} . . . . . {responses[0]}\n+{((int(coins/250))*10):04d} . . . . . {responses[0]}\n")
-                    data["Coins"] = coins + (int(coins / 250) * 10)
-                if carrot_plants > 0:
-                    embed01.add_field(name="**Carrots Grown**", value=f"{carrot_plants:05d} . . . . . {responses[1]}{responses[8]}\n{carrots:05d} . . . . . {responses[1]}\n+{carrot_plants:04d} . . . . . {responses[1]}\n")
-                    data["Carrots"] = carrots + carrot_plants
-                if potato_plants > 0:
-                    embed01.add_field(name="**Potatoes Grown**", value=f"{potato_plants:05d} . . . . . {responses[2]}{responses[8]}\n{potatoes:05d} . . . . . {responses[2]}\n+{potato_plants:04d} . . . . . {responses[2]}\n")
-                    data["Potatoes"] = potatoes + potato_plants
-                if lettuce_plants > 0:
-                    embed01.add_field(name="**Lettuce Grown**", value=f"{lettuce_plants:05d} . . . . . {responses[3]}{responses[8]}\n{lettuce:05d} . . . . . {responses[3]}\n+{lettuce_plants:04d} . . . . . {responses[3]}\n")
-                    data["Lettuce"] = lettuce + lettuce_plants
-                if pigs > 1:
-                    embed01.add_field(name="**Pig Meat**", value=f"{pigs:05d} . . . . . {responses[4]}\n{meat:05d} . . . . . {responses[6]}\n+{int(pigs/2):04d} . . . . . {responses[6]}\n")
-                    data["Meat"] = meat + int(pigs/2)
-                if cows > 1:
-                    embed01.add_field(name="**Cow Milk**", value=f"{cows:05d} . . . . . {responses[5]}\n{milk:05d} . . . . . {responses[7]}\n+{int(cows/2):04d} . . . . . {responses[7]}\n")
-                    data["Milk"] = milk + int(cows/2)
-
-                embed01.add_field(name="**Coins Earned**", value=f"{predata["Coins"] - coins:05d} . . . . . {responses[0]}\n")
-                await bot.get_channel(channel_id).send(embed=embed01)
-                json.dump(data, file, ensure_ascii=False, indent=4)
+    #for guild in bot.guilds:
+    #    for member in guild.members:
+    #        locationFile = f"./{str(member)}.json"
+    #        if os.path.isfile(locationFile) and os.access(locationFile, os.R_OK):
+    #            fileopen = str(member) + ".json"
+    #            file = open(fileopen, "r", encoding="utf-8")
+    #            predata = json.load(file)
+    #            fileopen = str(member) + ".json"
+    #            file = open(fileopen, "w", encoding="utf-8")
+    #            data = predata
+    #            coins = predata["Coins"]
+    #            carrots = predata["Carrots"]
+    #            potatoes = predata["Potatoes"]
+    #            lettuce = predata["Lettuce"]
+    #            meat = predata["Meat"]
+    #            milk = predata["Milk"]
+    #            carrot_plants = predata["CarrotPlant"]
+    #            potato_plants = predata["PotatoPlant"]
+    #            lettuce_plants = predata["LettucePlant"]
+    #            pigs = predata["Pigs"]
+    #            cows = predata["Cows"]
+    #
+    #            responses = ["🪙", "🥕", "🥔", "🥬", "🐖", "🐄", "🥩", "🥛", "🪴"]
+    #            embed01 = discord.Embed(title=f"{str(member)}'s Farm", color=discord.Color.green())
+    #            if int(coins/250) > 0:
+    #                embed01.add_field(name="**Coin Interests**", value=f"{coins:05d} . . . . . {responses[0]}\n+{((int(coins/250))*10):04d} . . . . . {responses[0]}\n")
+    #                data["Coins"] = coins + (int(coins / 250) * 10)
+    #            if carrot_plants > 0:
+    #                embed01.add_field(name="**Carrots Grown**", value=f"{carrot_plants:05d} . . . . . {responses[1]}{responses[8]}\n{carrots:05d} . . . . . {responses[1]}\n+{carrot_plants:04d} . . . . . {responses[1]}\n")
+    #                data["Carrots"] = carrots + carrot_plants
+    #            if potato_plants > 0:
+    #                embed01.add_field(name="**Potatoes Grown**", value=f"{potato_plants:05d} . . . . . {responses[2]}{responses[8]}\n{potatoes:05d} . . . . . {responses[2]}\n+{potato_plants:04d} . . . . . {responses[2]}\n")
+    #                data["Potatoes"] = potatoes + potato_plants
+    #            if lettuce_plants > 0:
+    #                embed01.add_field(name="**Lettuce Grown**", value=f"{lettuce_plants:05d} . . . . . {responses[3]}{responses[8]}\n{lettuce:05d} . . . . . {responses[3]}\n+{lettuce_plants:04d} . . . . . {responses[3]}\n")
+    #                data["Lettuce"] = lettuce + lettuce_plants
+    #            if pigs > 1:
+    #                embed01.add_field(name="**Pig Meat**", value=f"{pigs:05d} . . . . . {responses[4]}\n{meat:05d} . . . . . {responses[6]}\n+{int(pigs/2):04d} . . . . . {responses[6]}\n")
+    #                data["Meat"] = meat + int(pigs/2)
+    #            if cows > 1:
+    #                embed01.add_field(name="**Cow Milk**", value=f"{cows:05d} . . . . . {responses[5]}\n{milk:05d} . . . . . {responses[7]}\n+{int(cows/2):04d} . . . . . {responses[7]}\n")
+    #                data["Milk"] = milk + int(cows/2)
+    #
+    #            embed01.add_field(name="**Coins Earned**", value=f"{predata["Coins"] - coins:05d} . . . . . {responses[0]}\n")
+    #            await bot.get_channel(channel_id).send(embed=embed01)
+    #            json.dump(data, file, ensure_ascii=False, indent=4)
 
 
 # Start the bot
